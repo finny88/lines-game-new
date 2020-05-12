@@ -1,7 +1,7 @@
 import React, { FC, useRef } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { increase, IAppState, decrease, reset } from './redux';
-import { increaseAsyncStartAction } from './redux/counter/actions';
+import { increase, IAppState, decrease, reset } from './store';
+import { increaseAsyncStartAction } from './store/counter/actions';
 
 export const Counter: FC = () => {
   const numberInputRef = useRef<HTMLInputElement>();
