@@ -4,6 +4,7 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = merge(base, {
   mode: 'development',
+  devtool: 'inline-source-map',
   resolve: {
     alias: {
       'react-dom': '@hot-loader/react-dom',
@@ -19,11 +20,17 @@ module.exports = merge(base, {
         exclude: /node_modules/,
         use: [
           'style-loader',
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
           {
             loader: 'sass-loader',
             options: {
               implementation: require('sass'),
+              sourceMap: true,
             },
           },
         ],
@@ -34,7 +41,6 @@ module.exports = merge(base, {
       },
     ],
   },
-  devtool: 'inline-source-map',
   devServer: {
     hot: true,
   },
