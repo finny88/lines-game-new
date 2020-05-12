@@ -19,12 +19,12 @@ export const counterReducer = (
     case CounterActionsKinds.INCREASE:
       return {
         ...state,
-        count: state.count + action.payload,
+        count: state.count + (action.payload || 1),
       };
     case CounterActionsKinds.DECREASE:
       return {
         ...state,
-        count: state.count - action.payload,
+        count: state.count - (action.payload || 1),
       };
     case CounterActionsKinds.RESET:
       return defaultCounterState;
@@ -35,7 +35,7 @@ export const counterReducer = (
       };
     case CounterActionsKinds.INCREASE_FINISH:
       return {
-        count: state.count + action.payload,
+        count: state.count + (action.payload || 1),
         calculating: false,
       };
   }
