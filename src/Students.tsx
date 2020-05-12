@@ -2,8 +2,6 @@ import React, { useState, useCallback, createElement } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Counter } from './Counter';
 
-$('body').css('background-color', 'lightSkyBlue');
-
 const App: React.FunctionComponent = () => {
   const [averageElement, setAverageElement] = useState(null);
   const [totalElement, setTotalElement] = useState(null);

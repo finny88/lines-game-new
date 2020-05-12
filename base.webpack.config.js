@@ -1,5 +1,4 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
 const path = require('path');
 const basePath = __dirname;
 
@@ -7,14 +6,10 @@ module.exports = {
   context: path.join(basePath, 'src'),
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
-    alias: {
-      jquery: 'jquery/dist/jquery.slim.js',
-    },
   },
   entry: {
     app: './index.tsx',
     appStyles: ['./mystyles.scss'],
-    vendor: ['jquery'],
     vendorStyles: ['../node_modules/bootstrap/dist/css/bootstrap.css'],
   },
   optimization: {
@@ -79,10 +74,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html', //Name of file in ./dist/
       template: 'index.html', //Name of template in ./src
-    }),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
     }),
   ],
 };
