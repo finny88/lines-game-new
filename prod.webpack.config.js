@@ -18,12 +18,6 @@ module.exports = merge(base, {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[name]__[local]__[hash:base64:5]',
-              },
-              localsConvention: 'camelCase',
-            },
           },
           {
             loader: 'sass-loader',
