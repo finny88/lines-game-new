@@ -1,1 +1,1 @@
-export { default as LinesGame } from './LinesGame';
+export { default as App } from './App';

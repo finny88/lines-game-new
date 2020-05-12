@@ -9,7 +9,7 @@ module.exports = {
   },
   entry: {
     app: './index.tsx',
-    appStyles: ['./mystyles.scss'],
+    appStyles: ['./styles/lines-common.scss'],
     vendorStyles: ['../node_modules/bootstrap/dist/css/bootstrap.css'],
   },
   optimization: {
