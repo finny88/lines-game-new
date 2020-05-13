@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch dev.webpack.config.js --exec \"webpack-dev-server --mode development --open --config dev.webpack.config.js\"",
+    "start": "nodemon --watch base.webpack.config.js --watch dev.webpack.config.js --exec \"webpack-dev-server --mode development --open --config dev.webpack.config.js\"",
     "build:dev": "rimraf dist && webpack --config dev.webpack.config.js",
     "build:prod": "rimraf dist && webpack --config prod.webpack.config.js",
     "start:prod": "node ./server",
