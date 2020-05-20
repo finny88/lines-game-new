@@ -1,0 +1,8 @@
+.lines-playing-field {
+  display: flex;
+  flex-direction: column;
+
+  &__row {
+    display: flex;
+  }
+}
