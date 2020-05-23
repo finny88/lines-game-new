@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux';
-import { ICounterState, counterReducer } from './counter';
 
-export interface IAppState {
-  counter: ICounterState;
-}
+import { IAppState } from './common';
+
+import { nextCirclesReducer } from './newCircles';
 
 export const rootReducer = combineReducers<IAppState>({
-  counter: counterReducer,
+  nextCircles: nextCirclesReducer,
 });

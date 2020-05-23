@@ -1,6 +1,8 @@
 import { all, fork } from 'redux-saga/effects';
-import { watchIncrementAsync } from './counter';
+
+import { watchNextCirclesRequest } from './newCircles/sagas';
+import { watchInitLines } from './common';
 
 export const rootSaga = function* root(): Generator {
-  yield all([fork(watchIncrementAsync)]);
+  yield all([fork(watchInitLines), fork(watchNextCirclesRequest)]);
 };

@@ -1,3 +1,2 @@
 export { store } from './store';
-export { IAppState } from './rootReducer';
-export * from './counter';
+export { IAppState } from './common';
