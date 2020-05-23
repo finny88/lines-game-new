@@ -12,4 +12,9 @@
   &_last-column {
     @include border($direction: right, $width: $border-width, $style: solid, $color: $nero);
   }
+
+  @include lines-mq-medium-down {
+    width: $square-size-small;
+    height: $square-size-small;
+  }
 }

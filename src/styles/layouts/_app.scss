@@ -2,4 +2,8 @@
   @include flex-center;
   width: 100vw;
   height: 100vh;
+
+  @include lines-mq-medium-down {
+    flex-direction: column-reverse;
+  }
 }
