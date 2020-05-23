@@ -1,15 +1,16 @@
-.lines-playing-field-square {
+.next-circles {
+  margin-left: $square-size;
+}
+
+.next-circle {
   @include border($direction: left, $width: $border-width, $style: solid, $color: $nero);
   @include border($direction: top, $width: $border-width, $style: solid, $color: $nero);
+  @include border($direction: right, $width: $border-width, $style: solid, $color: $nero);
 
   width: $square-size;
   height: $square-size;
 
-  &_last-row {
+  &_last {
     @include border($direction: bottom, $width: $border-width, $style: solid, $color: $nero);
-  }
-
-  &_last-column {
-    @include border($direction: right, $width: $border-width, $style: solid, $color: $nero);
   }
 }
