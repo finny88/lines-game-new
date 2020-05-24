@@ -1,3 +1,7 @@
+@mixin lines-circle-gradient($color) {
+  @include radial-gradient(circle, farthest-side, 35%, 35%, $white, $color);
+}
+
 .lines-circle {
   @include square(70%);
 
@@ -9,25 +13,31 @@
 
   &_red {
     background-color: $red;
+    @include lines-circle-gradient($red);
   }
 
   &_green {
     background-color: $green;
+    @include lines-circle-gradient($green);
   }
 
   &_blue {
     background-color: $blue;
+    @include lines-circle-gradient($blue);
   }
 
   &_cyan {
     background-color: $cyan;
+    @include lines-circle-gradient($cyan);
   }
 
   &_yellow {
     background-color: $yellow;
+    @include lines-circle-gradient($yellow);
   }
 
   &_purple {
     background-color: $purple;
+    @include lines-circle-gradient($purple);
   }
 }

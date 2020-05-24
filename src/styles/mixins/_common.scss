@@ -46,3 +46,7 @@
     box-shadow: $shift-right $shift-down $blur-radius $spread-radius $color;
   }
 }
+
+@mixin radial-gradient($shape, $extent, $left, $top, $colors...) {
+  background: radial-gradient($shape $extent at $left $top, $colors);
+}
