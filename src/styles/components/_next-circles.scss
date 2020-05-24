@@ -17,8 +17,7 @@
   @include border($direction: top, $width: $border-width, $style: solid, $color: $nero);
   @include border($direction: right, $width: $border-width, $style: solid, $color: $nero);
 
-  width: $square-size;
-  height: $square-size;
+  @include square($square-size);
 
   @include lines-mq-medium-down {
     @include border($direction: left, $width: $border-width, $style: solid, $color: $nero);
@@ -26,8 +25,7 @@
     @include border($direction: bottom, $width: $border-width, $style: solid, $color: $nero);
     @include border-none($direction: right);
 
-    width: $square-size-small;
-    height: $square-size-small;
+    @include square($square-size-small);
   }
 
   &_last {

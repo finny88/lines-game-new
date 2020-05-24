@@ -1,8 +1,5 @@
 .lines-circle {
-  $circle-size: 70%;
-
-  width: $circle-size;
-  height: $circle-size;
+  @include square(70%);
 
   border-radius: 50%;
 

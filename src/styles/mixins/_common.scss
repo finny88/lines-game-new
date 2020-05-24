@@ -19,6 +19,15 @@
   border-#{$direction}: none;
 }
 
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin square($size) {
+  @include size($size, $size);
+}
+
 @mixin box-shadow(
   $shift-right: 0,
   $shift-down: 0,
