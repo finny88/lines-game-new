@@ -1,4 +1,4 @@
-.next-circles {
+.lines-next-circles {
   margin-left: $square-size;
 
   @include lines-mq-medium-down {
@@ -8,7 +8,9 @@
   }
 }
 
-.next-circle {
+.lines-next-circle {
+  @include flex-center;
+
   @include border($direction: left, $width: $border-width, $style: solid, $color: $nero);
   @include border($direction: top, $width: $border-width, $style: solid, $color: $nero);
   @include border($direction: right, $width: $border-width, $style: solid, $color: $nero);

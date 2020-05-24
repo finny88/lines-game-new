@@ -1,0 +1,36 @@
+.lines-circle {
+  $circle-size: 70%;
+
+  width: $circle-size;
+  height: $circle-size;
+
+  border-radius: 50%;
+
+  &_white {
+    background-color: $white;
+  }
+
+  &_red {
+    background-color: $red;
+  }
+
+  &_green {
+    background-color: $green;
+  }
+
+  &_blue {
+    background-color: $blue;
+  }
+
+  &_cyan {
+    background-color: $cyan;
+  }
+
+  &_yellow {
+    background-color: $yellow;
+  }
+
+  &_purple {
+    background-color: $purple;
+  }
+}

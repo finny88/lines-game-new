@@ -1,20 +1,29 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames';
+
+import { IAppState } from 'store';
 
 import { NEXT_CIRCLES_NUMBER } from 'constants/gameCharacteristics';
 
+import Circle from 'components/Circle';
+
+const trinity = [...Array(NEXT_CIRCLES_NUMBER).keys()];
+
 const NextCircles: React.FC = () => {
-  const trinity = [...Array(NEXT_CIRCLES_NUMBER).keys()];
+  const circlesColors = useSelector((state: IAppState) => state.nextCircles);
 
   return (
-    <div className="next-circles">
+    <div className="lines-next-circles">
       {trinity.map((i: number) => (
         <div
           key={`next-circle-${i}`}
-          className={classNames('next-circle', {
-            'next-circle_last': i === NEXT_CIRCLES_NUMBER - 1,
+          className={classNames('lines-next-circle', {
+            'lines-next-circle_last': i === NEXT_CIRCLES_NUMBER - 1,
           })}
-        />
+        >
+          <Circle color={circlesColors[i]} />
+        </div>
       ))}
     </div>
   );
