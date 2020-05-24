@@ -18,3 +18,22 @@
 @mixin border-none($direction) {
   border-#{$direction}: none;
 }
+
+@mixin box-shadow(
+  $shift-right: 0,
+  $shift-down: 0,
+  $blur-radius: $shadow-blur-default,
+  $spread-radius: 0,
+  $color: $nero,
+  $inset: false
+) {
+  @if $inset {
+    -webkit-box-shadow: inset $shift-right $shift-down $blur-radius $spread-radius $color;
+    -moz-box-shadow: inset $shift-right $shift-down $blur-radius $spread-radius $color;
+    box-shadow: inset $shift-right $shift-down $blur-radius $spread-radius $color;
+  } @else {
+    -webkit-box-shadow: $shift-right $shift-down $blur-radius $spread-radius $color;
+    -moz-box-shadow: $shift-right $shift-down $blur-radius $spread-radius $color;
+    box-shadow: $shift-right $shift-down $blur-radius $spread-radius $color;
+  }
+}

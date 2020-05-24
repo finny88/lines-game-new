@@ -1,4 +1,6 @@
 .lines-playing-field {
+  @include box-shadow;
+
   display: flex;
   flex-direction: column;
 

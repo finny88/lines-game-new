@@ -1,4 +1,6 @@
 .lines-next-circles {
+  @include box-shadow;
+
   margin-left: $square-size;
 
   @include lines-mq-medium-down {
