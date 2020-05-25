@@ -1,4 +1,6 @@
 .lines-playing-field-square {
+  @include flex-center;
+
   @include border($direction: left, $width: $border-width, $style: solid, $color: $nero);
   @include border($direction: top, $width: $border-width, $style: solid, $color: $nero);
 

@@ -5,7 +5,7 @@ import { CircleColor } from 'constants/circleColor';
 
 export const initialLinesState: IAppState = {
   nextCircles: [...Array(NEXT_CIRCLES_NUMBER).fill(CircleColor.White)],
-  fieldCirclesState: [...Array(PLAYING_FIELD_SQUARES_NUMBER).fill(CircleColor.White)],
+  fieldCircles: [...Array(PLAYING_FIELD_SQUARES_NUMBER).fill(CircleColor.White)],
   allSquaresOccupied: false,
   canCircleMove: true,
   pointsCounter: 0,

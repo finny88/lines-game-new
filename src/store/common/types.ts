@@ -26,7 +26,7 @@ export type AllowedPayloadType = CircleColor | CircleColor[] | boolean | number;
 // TODO: create reducers for optional fields and make these ones mandatory
 export interface IAppState {
   nextCircles: CircleColor[];
-  fieldCirclesState?: CircleColor[];
+  fieldCircles: CircleColor[];
   allSquaresOccupied?: boolean;
   canCircleMove?: boolean;
   pointsCounter?: number;

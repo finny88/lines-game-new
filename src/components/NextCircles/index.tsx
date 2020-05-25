@@ -2,16 +2,15 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 
-import { IAppState } from 'store';
-
 import { NEXT_CIRCLES_NUMBER } from 'constants/gameCharacteristics';
+import { nextCirclesSelector } from 'store/newCircles';
 
 import Circle from 'components/Circle';
 
 const trinity = [...Array(NEXT_CIRCLES_NUMBER).keys()];
 
 const NextCircles: React.FC = () => {
-  const circlesColors = useSelector((state: IAppState) => state.nextCircles);
+  const circlesColors = useSelector(nextCirclesSelector);
 
   return (
     <div className="lines-next-circles">
