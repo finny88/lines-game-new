@@ -10,6 +10,8 @@ function* initLines(): Generator<InitLinesEffect> {
   yield* generateNextCircles();
 
   yield* generateFieldCircles();
+
+  yield* generateNextCircles();
 }
 
 export function* watchInitLines(): Generator {
