@@ -31,9 +31,9 @@
     @include lines-circle-gradient($cyan);
   }
 
-  &_yellow {
-    background-color: $yellow;
-    @include lines-circle-gradient($yellow);
+  &_gold {
+    background-color: $gold;
+    @include lines-circle-gradient($gold);
   }
 
   &_purple {

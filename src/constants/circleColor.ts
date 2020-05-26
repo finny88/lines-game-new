@@ -7,6 +7,6 @@ export enum CircleColor {
   Green,
   Blue,
   Cyan,
-  Yellow,
+  Gold,
   Purple,
 }
