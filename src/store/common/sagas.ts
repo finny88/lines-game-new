@@ -1,11 +1,12 @@
-import { takeEvery, Effect } from 'redux-saga/effects';
+import { takeEvery } from 'redux-saga/effects';
 
-import { generateNextCircles } from 'store/newCircles';
+import { generateNextCircles, GenerateNextCirclesEffect } from 'store/newCircles';
 import { INIT_LINES } from './actionTypes';
-import { generateFieldCircles } from 'store/fieldCircles';
-import { CircleColor } from 'constants/circleColor';
+import { generateFieldCircles, GenerateFieldCirclesEffect } from 'store/fieldCircles';
 
-function* initLines(): Generator<Effect, void, CircleColor[]> {
+export type InitLinesEffect = GenerateFieldCirclesEffect | GenerateNextCirclesEffect;
+
+function* initLines(): Generator<InitLinesEffect> {
   yield* generateNextCircles();
 
   yield* generateFieldCircles();

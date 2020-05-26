@@ -1,12 +1,13 @@
-import { put, call, all, takeEvery, Effect } from 'redux-saga/effects';
+import { put, call, all, takeEvery, PutEffect, AllEffect, CallEffect } from 'redux-saga/effects';
 
 import { NEXT_CIRCLES_NUMBER } from 'constants/gameCharacteristics';
 import { getCircle } from 'utils/nextCircles';
 import { GENERATE_NEXT_CIRCLES, NEXT_CIRCLES_GENERATED } from './actionTypes';
-import { CircleColor } from 'constants/circleColor';
 
-export function* generateNextCircles(): Generator<Effect, void, CircleColor[]> {
-  const nextCirclesActions = [...Array(NEXT_CIRCLES_NUMBER).fill(call(getCircle))];
+export type GenerateNextCirclesEffect = AllEffect<CallEffect> | PutEffect;
+
+export function* generateNextCircles(): Generator<GenerateNextCirclesEffect> {
+  const nextCirclesActions: CallEffect[] = [...Array(NEXT_CIRCLES_NUMBER).fill(call(getCircle))];
 
   const nextCirclesColors = yield all(nextCirclesActions);
 
