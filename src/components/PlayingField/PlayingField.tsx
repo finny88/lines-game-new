@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import PlayingFieldSquare from 'components/PlayingFieldSquare';
+import { PlayingFieldSquare } from 'components/PlayingFieldSquare';
 
 import { PLAYING_FIELD_ROW_SQUARES_NUMBER } from 'constants/gameCharacteristics';
 import { fieldCirclesSelector } from 'store/fieldCircles/selectors';

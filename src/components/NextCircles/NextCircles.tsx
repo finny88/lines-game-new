@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import { NEXT_CIRCLES_NUMBER } from 'constants/gameCharacteristics';
 import { nextCirclesSelector } from 'store/newCircles';
 
-import Circle from 'components/Circle';
+import { Circle } from 'components/Circle';
 
 const trinity = [...Array(NEXT_CIRCLES_NUMBER).keys()];
 
