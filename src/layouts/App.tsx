@@ -12,7 +12,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     dispatch({ type: INIT_LINES });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="lines-app">
