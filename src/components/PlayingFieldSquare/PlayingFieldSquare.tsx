@@ -1,18 +1,22 @@
 import React from 'react';
 import classNames from 'classnames';
 
+import { IPlayingFieldSquare } from './types';
+
 import { PLAYING_FIELD_ROW_SQUARES_NUMBER } from 'constants/gameCharacteristics';
 import { CircleColor } from 'constants/circleColor';
 
 import { Circle } from 'components/Circle';
 
 interface IProps {
-  row: number;
-  column: number;
+  square: IPlayingFieldSquare;
   circleColor: CircleColor;
 }
 
-const PlayingFieldSquare: React.FC<IProps> = ({ row, column, circleColor }) => {
+const PlayingFieldSquare: React.FC<IProps> = (props) => {
+  const { square, circleColor } = props;
+  const { row, column } = square;
+
   return (
     <div
       className={classNames('lines-playing-field-square', {

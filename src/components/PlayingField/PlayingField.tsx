@@ -1,26 +1,23 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { PlayingFieldSquare } from 'components/PlayingFieldSquare';
-
-import { PLAYING_FIELD_ROW_SQUARES_NUMBER } from 'constants/gameCharacteristics';
 import { fieldCirclesSelector } from 'store/fieldCircles/selectors';
+import { squaresDecades } from './utils';
 
-const decade = [...Array(PLAYING_FIELD_ROW_SQUARES_NUMBER).keys()];
+import { PlayingFieldSquare } from 'components/PlayingFieldSquare';
 
 const PlayingField: React.FC = () => {
   const fieldCirclesColors = useSelector(fieldCirclesSelector);
 
   return (
     <div className="lines-playing-field">
-      {decade.map((i: number) => (
-        <div className="lines-playing-field__row" key={`lines-row-${i}`}>
-          {decade.map((j: number) => (
+      {squaresDecades.map((decade, index) => (
+        <div className="lines-playing-field__row" key={`lines-row-${index}`}>
+          {decade.map((square) => (
             <PlayingFieldSquare
-              key={`lines-square-${i * PLAYING_FIELD_ROW_SQUARES_NUMBER + j}`}
-              row={i + 1}
-              column={j + 1}
-              circleColor={fieldCirclesColors[i * PLAYING_FIELD_ROW_SQUARES_NUMBER + j]}
+              key={`lines-square-${square.flatIndex}`}
+              square={square}
+              circleColor={fieldCirclesColors[square.flatIndex]}
             />
           ))}
         </div>
