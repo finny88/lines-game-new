@@ -4,8 +4,8 @@ import { NEXT_CIRCLES_NUMBER, PLAYING_FIELD_SQUARES_NUMBER } from 'constants/gam
 import { CircleColor } from 'constants/circleColor';
 
 export const initialLinesState: IAppState = {
-  nextCircles: [...Array(NEXT_CIRCLES_NUMBER).fill(CircleColor.White)],
-  fieldCircles: [...Array(PLAYING_FIELD_SQUARES_NUMBER).fill(CircleColor.White)],
+  nextCircles: [...Array(NEXT_CIRCLES_NUMBER).fill(CircleColor.white)],
+  fieldCircles: [...Array(PLAYING_FIELD_SQUARES_NUMBER).fill(CircleColor.white)],
   allSquaresOccupied: false,
   canCircleMove: true,
   pointsCounter: 0,

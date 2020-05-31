@@ -2,42 +2,80 @@
   @include radial-gradient(circle, farthest-side, 35%, 35%, $white, $color);
 }
 
+@mixin lines-circle-animate($key-frames-name) {
+  animation: #{$key-frames-name} 500ms linear forwards;
+}
+
+$colors: (
+  'red': $red,
+  'green': $green,
+  'blue': $blue,
+  'cyan': $cyan,
+  'gold': $gold,
+  'purple': $purple,
+);
+
+@each $name, $color in $colors {
+  @keyframes white-to-#{$name} {
+    from {
+      background-color: $white;
+    }
+
+    to {
+      background-color: $color;
+      @include lines-circle-gradient($color);
+      opacity: 1;
+    }
+  }
+}
+
+@each $prev-name, $prev-color in $colors {
+  @each $next-name, $next-color in $colors {
+    @if ($prev-name != $next-name) {
+      @keyframes #{$prev-name}-to-#{$next-name} {
+        from {
+          background-color: $prev-color;
+          @include lines-circle-gradient($prev-color);
+          opacity: 1;
+        }
+
+        25%,
+        75% {
+          opacity: 0;
+        }
+
+        to {
+          background-color: $next-color;
+          @include lines-circle-gradient($next-color);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
 .lines-circle {
   @include square(70%);
 
   border-radius: 50%;
 
-  &_white {
-    background-color: $white;
+  @each $name, $color in $colors {
+    $key-frames-name: white-to-#{$name};
+
+    &_#{$key-frames-name} {
+      @include lines-circle-animate($key-frames-name);
+    }
   }
 
-  &_red {
-    background-color: $red;
-    @include lines-circle-gradient($red);
-  }
+  @each $prev-name, $prev-color in $colors {
+    @each $next-name, $next-color in $colors {
+      @if ($prev-name != $next-name) {
+        $key-frames-name: #{$prev-name}-to-#{$next-name};
 
-  &_green {
-    background-color: $green;
-    @include lines-circle-gradient($green);
-  }
-
-  &_blue {
-    background-color: $blue;
-    @include lines-circle-gradient($blue);
-  }
-
-  &_cyan {
-    background-color: $cyan;
-    @include lines-circle-gradient($cyan);
-  }
-
-  &_gold {
-    background-color: $gold;
-    @include lines-circle-gradient($gold);
-  }
-
-  &_purple {
-    background-color: $purple;
-    @include lines-circle-gradient($purple);
+        &_#{$key-frames-name} {
+          @include lines-circle-animate($key-frames-name);
+        }
+      }
+    }
   }
 }

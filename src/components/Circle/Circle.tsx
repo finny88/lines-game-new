@@ -1,13 +1,23 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import { CircleColor } from 'constants/circleColor';
+import { useColorsNames } from './hooks';
 
 interface IProps {
   color: CircleColor;
 }
 
-const Circle: React.FC<IProps> = ({ color }) => (
-  <div className={`lines-circle lines-circle_${CircleColor[color].toLocaleLowerCase()}`} />
-);
+const Circle: React.FC<IProps> = ({ color }) => {
+  const { prevColorName, colorName } = useColorsNames(color);
 
-export default Circle;
+  return (
+    <div
+      className={classNames('lines-circle', {
+        [`lines-circle_${prevColorName}-to-${colorName}`]: prevColorName !== colorName,
+      })}
+    />
+  );
+};
+
+export default React.memo(Circle);

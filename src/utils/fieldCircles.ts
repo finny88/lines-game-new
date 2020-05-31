@@ -25,7 +25,7 @@ export const getFieldCircles = ({
     while (isEmptyField) {
       const fieldNumber: number = Math.floor(Math.random() * PLAYING_FIELD_SQUARES_NUMBER);
 
-      if (newFieldCircles[fieldNumber] === CircleColor.White) {
+      if (newFieldCircles[fieldNumber] === CircleColor.white) {
         newFieldCircles[fieldNumber] = nextCircles[i];
         isEmptyField = false;
       }
