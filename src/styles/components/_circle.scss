@@ -40,6 +40,26 @@ $colors: (
     }
   }
 
+  @each $name, $color in $colors {
+    $key-frames-name: #{$name}-to-white;
+
+    @keyframes #{$key-frames-name} {
+      from {
+        background-color: $color;
+        @include lines-circle-gradient($color);
+        opacity: 1;
+      }
+
+      to {
+        background-color: $white;
+      }
+    }
+
+    &_#{$key-frames-name} {
+      @include lines-circle-animate($key-frames-name);
+    }
+  }
+
   @each $prev-name, $prev-color in $colors {
     @each $next-name, $next-color in $colors {
       @if ($prev-name != $next-name) {
