@@ -3,7 +3,7 @@
 }
 
 @mixin lines-circle-animate($key-frames-name) {
-  animation: #{$key-frames-name} 500ms linear forwards;
+  animation: #{$key-frames-name} 500ms ease-in-out forwards;
 }
 
 $colors: (

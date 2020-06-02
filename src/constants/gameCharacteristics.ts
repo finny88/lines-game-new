@@ -11,3 +11,6 @@ export const NEXT_CIRCLES_NUMBER = 3;
 
 /** Количество цветов для раскраски кружков */
 export const CIRCLE_COLORS_NUMBER: number = Object.keys(CircleColor).length / 2 - 1;
+
+/** Задержка анимации при моргании шарика прир его выделении в мс */
+export const CIRCLE_BLINK_ANIMATION_DELAY = 500;
