@@ -15,45 +15,6 @@ $colors: (
   'purple': $purple,
 );
 
-@each $name, $color in $colors {
-  @keyframes white-to-#{$name} {
-    from {
-      background-color: $white;
-    }
-
-    to {
-      background-color: $color;
-      @include lines-circle-gradient($color);
-      opacity: 1;
-    }
-  }
-}
-
-@each $prev-name, $prev-color in $colors {
-  @each $next-name, $next-color in $colors {
-    @if ($prev-name != $next-name) {
-      @keyframes #{$prev-name}-to-#{$next-name} {
-        from {
-          background-color: $prev-color;
-          @include lines-circle-gradient($prev-color);
-          opacity: 1;
-        }
-
-        25%,
-        75% {
-          opacity: 0;
-        }
-
-        to {
-          background-color: $next-color;
-          @include lines-circle-gradient($next-color);
-          opacity: 1;
-        }
-      }
-    }
-  }
-}
-
 .lines-circle {
   @include square(70%);
 
@@ -61,6 +22,18 @@ $colors: (
 
   @each $name, $color in $colors {
     $key-frames-name: white-to-#{$name};
+
+    @keyframes #{$key-frames-name} {
+      from {
+        background-color: $white;
+      }
+
+      to {
+        background-color: $color;
+        @include lines-circle-gradient($color);
+        opacity: 1;
+      }
+    }
 
     &_#{$key-frames-name} {
       @include lines-circle-animate($key-frames-name);
@@ -71,6 +44,27 @@ $colors: (
     @each $next-name, $next-color in $colors {
       @if ($prev-name != $next-name) {
         $key-frames-name: #{$prev-name}-to-#{$next-name};
+
+        @if ($prev-name != $next-name) {
+          @keyframes #{$key-frames-name} {
+            from {
+              background-color: $prev-color;
+              @include lines-circle-gradient($prev-color);
+              opacity: 1;
+            }
+
+            25%,
+            75% {
+              opacity: 0;
+            }
+
+            to {
+              background-color: $next-color;
+              @include lines-circle-gradient($next-color);
+              opacity: 1;
+            }
+          }
+        }
 
         &_#{$key-frames-name} {
           @include lines-circle-animate($key-frames-name);
