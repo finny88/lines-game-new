@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import classNames from 'classnames';
 
-import { IPlayingFieldSquare } from './types';
+import { IPlayingFieldSquare } from 'models';
 
 import {
   PLAYING_FIELD_ROW_SQUARES_NUMBER,

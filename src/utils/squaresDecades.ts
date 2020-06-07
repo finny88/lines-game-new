@@ -1,4 +1,4 @@
-import { IPlayingFieldSquare } from 'components/PlayingFieldSquare';
+import { IPlayingFieldSquare } from 'models';
 
 import { PLAYING_FIELD_ROW_SQUARES_NUMBER } from 'constants/gameCharacteristics';
 
@@ -12,5 +12,3 @@ export const squaresDecades: ReadonlyArray<readonly IPlayingFieldSquare[]> = dec
       flatIndex: i * PLAYING_FIELD_ROW_SQUARES_NUMBER + j,
     })),
 );
-
-export const initialSquare: IPlayingFieldSquare = { row: -1, column: -1, flatIndex: -1 };

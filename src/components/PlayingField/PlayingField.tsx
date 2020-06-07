@@ -1,12 +1,14 @@
 import React, { useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 
-import { IPlayingFieldSquare } from 'components/PlayingFieldSquare';
+import { IPlayingFieldSquare } from 'models';
 
 import { fieldCirclesSelector } from 'store/fieldCircles/selectors';
-import { squaresDecades, initialSquare } from './utils';
+import { squaresDecades } from 'utils/squaresDecades';
 
 import { PlayingFieldSquare } from 'components/PlayingFieldSquare';
+
+const initialSquare: IPlayingFieldSquare = { row: -1, column: -1, flatIndex: -1 };
 
 const PlayingField: React.FC = () => {
   const fieldCirclesColors = useSelector(fieldCirclesSelector);
