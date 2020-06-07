@@ -1,18 +1,20 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { IPlayingFieldSquare } from 'models';
+import { ICircleMotion } from 'utils/circleMotion';
 
 import { fieldCirclesSelector } from 'store/fieldCircles/selectors';
 import { INIT_NEXT_POSITION } from 'store/common/actionTypes';
 import { squaresDecades } from 'utils/squaresDecades';
+import { CircleMotion } from 'utils/circleMotion';
 
 import { PlayingFieldSquare } from 'components/PlayingFieldSquare';
 
 const initialSquare: IPlayingFieldSquare = { row: -1, column: -1, flatIndex: -1 };
 
 const PlayingField: React.FC = () => {
-  const emptySquareClicked = useRef<IPlayingFieldSquare | null>(null);
+  const circleMotionRef = useRef<ICircleMotion | null>(null);
 
   const fieldCirclesColors = useSelector(fieldCirclesSelector);
 
@@ -20,20 +22,27 @@ const PlayingField: React.FC = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (selected === initialSquare) {
-      dispatch({ type: INIT_NEXT_POSITION });
-    }
-  }, [dispatch, selected]);
-
   const handleCircleDeselected = useCallback(() => {
     setSelected(initialSquare);
   }, [setSelected]);
 
-  const handleEmptyClicked = useCallback((square: IPlayingFieldSquare) => {
-    emptySquareClicked.current = square;
-    setSelected(initialSquare);
-  }, []);
+  const handleEmptyClicked = useCallback(
+    (square: IPlayingFieldSquare) => {
+      circleMotionRef.current = {
+        source: selected,
+        destination: square,
+      };
+
+      setSelected(initialSquare);
+
+      const circleMotion = new CircleMotion(circleMotionRef.current, fieldCirclesColors);
+      const steps = circleMotion.GetCirclesSnapshotsList();
+      console.log('steps', steps);
+
+      dispatch({ type: INIT_NEXT_POSITION });
+    },
+    [dispatch, selected, fieldCirclesColors],
+  );
 
   return (
     <div className="lines-playing-field">
