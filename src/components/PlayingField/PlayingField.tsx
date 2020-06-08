@@ -1,9 +1,10 @@
-import React, { useState, useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { IPlayingFieldSquare } from 'models';
 
 import { fieldCirclesSelector } from 'store/fieldCircles/selectors';
+import { INIT_NEXT_POSITION } from 'store/common/actionTypes';
 import { squaresDecades } from 'utils/squaresDecades';
 
 import { PlayingFieldSquare } from 'components/PlayingFieldSquare';
@@ -11,11 +12,26 @@ import { PlayingFieldSquare } from 'components/PlayingFieldSquare';
 const initialSquare: IPlayingFieldSquare = { row: -1, column: -1, flatIndex: -1 };
 
 const PlayingField: React.FC = () => {
+  const emptySquareClicked = useRef<IPlayingFieldSquare | null>(null);
+
   const fieldCirclesColors = useSelector(fieldCirclesSelector);
 
   const [selected, setSelected] = useState<IPlayingFieldSquare>(initialSquare);
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (selected === initialSquare) {
+      dispatch({ type: INIT_NEXT_POSITION });
+    }
+  }, [dispatch, selected]);
+
   const handleCircleDeselected = useCallback(() => {
+    setSelected(initialSquare);
+  }, [setSelected]);
+
+  const handleEmptyClicked = useCallback((square: IPlayingFieldSquare) => {
+    emptySquareClicked.current = square;
     setSelected(initialSquare);
   }, []);
 
@@ -33,6 +49,7 @@ const PlayingField: React.FC = () => {
               isSelected={square === selected}
               onSelected={setSelected}
               onDeselected={handleCircleDeselected}
+              onEmptyClicked={handleEmptyClicked}
             />
           ))}
         </div>
