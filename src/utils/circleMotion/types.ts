@@ -1,6 +1,5 @@
 import { IPlayingFieldSquare } from 'models';
 
-import { Direction } from 'constants/direction';
 import { CircleColor } from 'constants/circleColor';
 
 /**
@@ -17,17 +16,15 @@ export interface IStep {
 /**
  * Структура данных, описывающая возможные действия при движении кружка по игровому полю.
  *
- * @prop {Function} boundPredicate Функция определения достижения границы игрового поля.
+ * @prop {Function} isEdge Функция определения достижения границы игрового поля.
  * @prop {Function} calculateNeighborIndex Функция определения индекса (в плоском массиве)
  * соседнего квадрата на игровом поле.
  * @prop {Function} getStep Функция получения данных о текущем шаге.
- * @prop {Function} oppositeDirection Функция получения противоположного направления.
  */
 export interface IMotionAction {
-  boundPredicate: (square: IPlayingFieldSquare) => boolean;
+  isEdge: (square: IPlayingFieldSquare) => boolean;
   calculateNeighborIndex: (square: IPlayingFieldSquare) => number;
   getStep: (square: IPlayingFieldSquare) => IStep;
-  oppositeDirection: () => Direction;
 }
 
 /**
@@ -54,15 +51,9 @@ export interface IPlayingFieldSnapshot {
   motionPossible: boolean;
 }
 
-/**
- * Снимок игрового поля при передвижении объекта.
- *
- * @prop {CircleColor[]} circles Текущая расстовка кружков на игровом поле.
- * @prop {boolean} isLast Последний ли ход.
- * @prop {boolean} motionIsPossible Возможно ли движении по заданному объекету типа ICircleMotion.
- */
-export interface ICirclesMotionSnapshot {
-  circles: CircleColor[];
-  isLast: boolean;
-  motionIsPossible: boolean;
+export interface ISquaresMarksManager {
+  _squaresMarks: number[];
+  readonly squaresMarks: number[];
+  init: (fieldCircles: CircleColor[]) => void;
+  update: (index: number, newValue: number) => void;
 }

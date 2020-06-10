@@ -6,8 +6,8 @@ import { ICircleMotion } from 'utils/circleMotion';
 
 import { fieldCirclesSelector } from 'store/fieldCircles/selectors';
 import { INIT_NEXT_POSITION } from 'store/common/actionTypes';
+import { getCirclesSnapshotsList } from 'utils/circleMotion';
 import { squaresDecades } from 'utils/squaresDecades';
-import { CircleMotion } from 'utils/circleMotion';
 
 import { PlayingFieldSquare } from 'components/PlayingFieldSquare';
 
@@ -35,9 +35,11 @@ const PlayingField: React.FC = () => {
 
       setSelected(initialSquare);
 
-      const circleMotion = new CircleMotion(circleMotionRef.current, fieldCirclesColors);
-      const steps = circleMotion.GetCirclesSnapshotsList();
-      console.log('steps', steps);
+      const t0 = performance.now();
+      const snapshots = getCirclesSnapshotsList(circleMotionRef.current, fieldCirclesColors);
+      const t1 = performance.now();
+      console.log('snapshots', snapshots);
+      console.log('Call to getCirclesSnapshotsList took ' + (t1 - t0) + ' milliseconds.');
 
       dispatch({ type: INIT_NEXT_POSITION });
     },
