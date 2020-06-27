@@ -15,13 +15,22 @@ interface IProps {
   square: IPlayingFieldSquare;
   circleColor: CircleColor;
   isSelected: boolean;
+  canBeClicked: boolean;
   onSelected: (square: IPlayingFieldSquare) => void;
   onDeselected: () => void;
   onEmptyClicked: (square: IPlayingFieldSquare) => void;
 }
 
 const PlayingFieldSquare: React.FC<IProps> = (props) => {
-  const { square, circleColor, isSelected, onSelected, onDeselected, onEmptyClicked } = props;
+  const {
+    square,
+    circleColor,
+    isSelected,
+    canBeClicked,
+    onSelected,
+    onDeselected,
+    onEmptyClicked,
+  } = props;
   const { row, column } = square;
 
   const intervalId = useRef<number>(0);
@@ -44,6 +53,10 @@ const PlayingFieldSquare: React.FC<IProps> = (props) => {
   }, [isSelected]);
 
   const handleClick = useCallback(() => {
+    if (!canBeClicked) {
+      return;
+    }
+
     if (circleColor === CircleColor.white) {
       onEmptyClicked(square);
       return;
@@ -54,7 +67,7 @@ const PlayingFieldSquare: React.FC<IProps> = (props) => {
     } else {
       onSelected(square);
     }
-  }, [circleColor, square, isSelected, onSelected, onDeselected, onEmptyClicked]);
+  }, [canBeClicked, circleColor, square, isSelected, onSelected, onDeselected, onEmptyClicked]);
 
   return (
     <div

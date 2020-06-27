@@ -192,26 +192,32 @@ export const getCirclesSnapshotsList = (
   const purposeWay = findWay(circleMotion, []);
 
   return purposeWay.length > 0
-    ? purposeWay.map((step: IStep, index: number) => {
+    ? purposeWay.reduce((snapshots: IPlayingFieldSnapshot[], step: IStep, index: number) => {
+        const prevFieldCircles =
+          snapshots.length > 0 ? snapshots[snapshots.length - 1].circles : fieldCircles;
+
         const currentCirclesList = flow([
           (fieldCircles: CircleColor[]) => fieldCircles.slice(),
           (fieldCirclesCopy: CircleColor[]) =>
             updateArrayItem(fieldCirclesCopy, step.from.flatIndex, CircleColor.white),
           (fieldCirclesCopy: CircleColor[]) =>
             updateArrayItem(fieldCirclesCopy, step.to.flatIndex, movingCircleColor),
-        ])(fieldCircles);
+        ])(prevFieldCircles);
 
         /**
          * Формируем новую расстановку
          * Определяем, последний ли это шаг
          * Флаг возможности движения установлен
          */
-        return {
-          circles: currentCirclesList,
-          isLast: index === purposeWay.length - 1,
-          motionPossible: true,
-        };
-      })
+        return [
+          ...snapshots,
+          {
+            circles: currentCirclesList,
+            isLast: index === purposeWay.length - 1,
+            motionPossible: true,
+          },
+        ];
+      }, [])
     : [
         {
           circles: fieldCircles,

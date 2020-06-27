@@ -2,7 +2,7 @@ import { IPayloadAction } from 'store/common';
 
 import { CircleColor } from 'constants/circleColor';
 import { initialLinesState, HighOrderedReducer } from 'store/common';
-import { NEW_FIELD_CIRCLES_GENERATED } from './actionTypes';
+import { NEW_FIELD_CIRCLES_GENERATED, SET_CIRCLE_MOVING } from './actionTypes';
 
 /**
  * Редьюсер для ветки игрового поля (расстановка и флаг текущего движения).
@@ -10,7 +10,7 @@ import { NEW_FIELD_CIRCLES_GENERATED } from './actionTypes';
  * @param state Текущее состояние игрового поля.
  * @param action Экшен с данными игрового поля.
  */
-const fieldCirclesReducer = (
+export const fieldCirclesReducer = (
   state: CircleColor[] = initialLinesState['fieldCircles'],
   action: IPayloadAction<CircleColor[]>,
 ): CircleColor[] =>
@@ -22,4 +22,14 @@ const fieldCirclesReducer = (
     action,
   );
 
-export default fieldCirclesReducer;
+export const isCircleMovingReducer = (
+  state: boolean = initialLinesState['isCircleMoving'],
+  action: IPayloadAction<boolean>,
+): boolean =>
+  HighOrderedReducer(
+    state,
+    {
+      [SET_CIRCLE_MOVING]: action.payload,
+    },
+    action,
+  );

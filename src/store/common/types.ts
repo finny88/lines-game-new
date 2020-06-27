@@ -27,6 +27,7 @@ export type AllowedPayloadType = CircleColor | CircleColor[] | boolean | number;
 export interface IAppState {
   nextCircles: CircleColor[];
   fieldCircles: CircleColor[];
+  isCircleMoving: boolean;
   allSquaresOccupied?: boolean;
   canCircleMove?: boolean;
   pointsCounter?: number;

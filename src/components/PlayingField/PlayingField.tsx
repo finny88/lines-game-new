@@ -4,9 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { IPlayingFieldSquare } from 'models';
 import { ICircleMotion } from 'utils/circleMotion';
 
-import { fieldCirclesSelector } from 'store/fieldCircles/selectors';
-import { INIT_NEXT_POSITION } from 'store/common/actionTypes';
-import { getCirclesSnapshotsList } from 'utils/circleMotion';
+import { fieldCirclesSelector, isCircleMovingSelector } from 'store/fieldCircles/selectors';
+import { MOVE_CIRCLE } from 'store/fieldCircles';
 import { squaresDecades } from 'utils/squaresDecades';
 
 import { PlayingFieldSquare } from 'components/PlayingFieldSquare';
@@ -17,6 +16,7 @@ const PlayingField: React.FC = () => {
   const circleMotionRef = useRef<ICircleMotion | null>(null);
 
   const fieldCirclesColors = useSelector(fieldCirclesSelector);
+  const isCircleMoving = useSelector(isCircleMovingSelector);
 
   const [selected, setSelected] = useState<IPlayingFieldSquare>(initialSquare);
 
@@ -35,15 +35,11 @@ const PlayingField: React.FC = () => {
 
       setSelected(initialSquare);
 
-      const t0 = performance.now();
-      const snapshots = getCirclesSnapshotsList(circleMotionRef.current, fieldCirclesColors);
-      const t1 = performance.now();
-      console.log('snapshots', snapshots);
-      console.log('Call to getCirclesSnapshotsList took ' + (t1 - t0) + ' milliseconds.');
-
-      dispatch({ type: INIT_NEXT_POSITION });
+      if (circleMotionRef.current) {
+        dispatch({ type: MOVE_CIRCLE, payload: circleMotionRef.current });
+      }
     },
-    [dispatch, selected, fieldCirclesColors],
+    [dispatch, selected], // fieldCirclesColors
   );
 
   return (
@@ -58,6 +54,7 @@ const PlayingField: React.FC = () => {
               // squaresDecades contains immutable array of references
               // so it's possible to use shallow comparison
               isSelected={square === selected}
+              canBeClicked={!isCircleMoving}
               onSelected={setSelected}
               onDeselected={handleCircleDeselected}
               onEmptyClicked={handleEmptyClicked}
