@@ -1,7 +1,7 @@
-import { IPayloadAction } from 'store/common';
+import { handleActions } from 'redux-actions';
 
 import { CircleColor } from 'constants/circleColor';
-import { initialLinesState, HighOrderedReducer } from 'store/common';
+import { initialLinesState, commonReducer } from 'store/common';
 import { NEW_FIELD_CIRCLES_GENERATED, SET_CIRCLE_MOVING } from './actionTypes';
 
 /**
@@ -10,26 +10,16 @@ import { NEW_FIELD_CIRCLES_GENERATED, SET_CIRCLE_MOVING } from './actionTypes';
  * @param state Текущее состояние игрового поля.
  * @param action Экшен с данными игрового поля.
  */
-export const fieldCirclesReducer = (
-  state: CircleColor[] = initialLinesState['fieldCircles'],
-  action: IPayloadAction<CircleColor[]>,
-): CircleColor[] =>
-  HighOrderedReducer(
-    state,
-    {
-      [NEW_FIELD_CIRCLES_GENERATED]: action.payload,
-    },
-    action,
-  );
+export const fieldCirclesReducer = handleActions<CircleColor[]>(
+  {
+    [NEW_FIELD_CIRCLES_GENERATED]: commonReducer,
+  },
+  initialLinesState['fieldCircles'],
+);
 
-export const isCircleMovingReducer = (
-  state: boolean = initialLinesState['isCircleMoving'],
-  action: IPayloadAction<boolean>,
-): boolean =>
-  HighOrderedReducer(
-    state,
-    {
-      [SET_CIRCLE_MOVING]: action.payload,
-    },
-    action,
-  );
+export const isCircleMovingReducer = handleActions<boolean>(
+  {
+    [SET_CIRCLE_MOVING]: commonReducer,
+  },
+  initialLinesState['isCircleMoving'],
+);

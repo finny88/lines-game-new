@@ -1,7 +1,7 @@
-import { IPayloadAction } from 'store/common';
+import { handleActions } from 'redux-actions';
 
 import { CircleColor } from 'constants/circleColor';
-import { initialLinesState, HighOrderedReducer } from 'store/common';
+import { initialLinesState, commonReducer } from 'store/common';
 import { NEXT_CIRCLES_GENERATED } from './actionTypes';
 
 /**
@@ -10,16 +10,11 @@ import { NEXT_CIRCLES_GENERATED } from './actionTypes';
  * @param {List<CircleColor>} state Текущие цвета шаров следующего хода.
  * @param {IPayloadAction<List<CircleColor>} [action] Экшен с цветами шаров.
  */
-const nextCirclesReducer = (
-  state: CircleColor[] = initialLinesState['nextCircles'],
-  action: IPayloadAction<CircleColor[]>,
-): CircleColor[] =>
-  HighOrderedReducer(
-    state,
-    {
-      [NEXT_CIRCLES_GENERATED]: action.payload,
-    },
-    action,
-  );
+const nextCirclesReducer = handleActions<CircleColor[]>(
+  {
+    [NEXT_CIRCLES_GENERATED]: commonReducer,
+  },
+  initialLinesState['nextCircles'],
+);
 
 export default nextCirclesReducer;

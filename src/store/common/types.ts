@@ -1,5 +1,20 @@
 import { CircleColor } from 'constants/circleColor';
 
+// TODO: create reducers for optional fields and make these ones mandatory
+export interface IAppState {
+  nextCircles: CircleColor[];
+  fieldCircles: CircleColor[];
+  isCircleMoving: boolean;
+  allSquaresOccupied?: boolean;
+  canCircleMove?: boolean;
+  pointsCounter?: number;
+}
+
+/**
+ * Допустимые типы данных для redux-actions.
+ */
+export type AllowedPayloadType = IAppState[keyof IAppState];
+
 /**
  * Простешее redux действие.
  *
@@ -14,21 +29,6 @@ export interface IAction {
  *
  * @prop {T} payload Данные.
  */
-export interface IPayloadAction<T> extends IAction {
+export interface IPayloadAction<T extends AllowedPayloadType> extends IAction {
   payload: T;
-}
-
-/**
- * Допустимые типы данных для redux-actions.
- */
-export type AllowedPayloadType = CircleColor | CircleColor[] | boolean | number;
-
-// TODO: create reducers for optional fields and make these ones mandatory
-export interface IAppState {
-  nextCircles: CircleColor[];
-  fieldCircles: CircleColor[];
-  isCircleMoving: boolean;
-  allSquaresOccupied?: boolean;
-  canCircleMove?: boolean;
-  pointsCounter?: number;
 }
