@@ -1,7 +1,7 @@
 import { all, fork, AllEffect, ForkEffect } from 'redux-saga/effects';
 
 import { watchInitLines, watchInitNextPosition } from './common';
-import { watchMoveCircle } from './fieldCircles';
+import { watchMoveCircle } from './circleMoving';
 
 type RootSagaEffect = AllEffect<ForkEffect<Generator>>;
 

@@ -1,0 +1,4 @@
+import { ACTION_TYPES_PREFIX } from 'store/common';
+
+export const SET_CIRCLE_MOVING = `${ACTION_TYPES_PREFIX}SET_CIRCLE_MOVING`;
+export const MOVE_CIRCLE = `${ACTION_TYPES_PREFIX}MOVE_CIRCLE`;

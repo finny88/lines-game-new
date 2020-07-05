@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { IPlayingFieldSquare } from 'models';
 import { ICircleMotion } from 'utils/circleMotion';
 
-import { fieldCirclesSelector, isCircleMovingSelector } from 'store/fieldCircles/selectors';
-import { MOVE_CIRCLE } from 'store/fieldCircles';
+import { fieldCirclesSelector } from 'store/fieldCircles/selectors';
+import { isCircleMovingSelector, MOVE_CIRCLE } from 'store/circleMoving';
 import { squaresDecades } from 'utils/squaresDecades';
 
 import { PlayingFieldSquare } from 'components/PlayingFieldSquare';

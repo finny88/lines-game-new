@@ -12,8 +12,6 @@ import { PLAYING_FIELD_SQUARES_NUMBER, NEXT_CIRCLES_NUMBER } from 'constants/gam
  */
 export const fieldCirclesSelector = (state: IAppState): CircleColor[] => state.fieldCircles;
 
-export const isCircleMovingSelector = (state: IAppState): boolean => state.isCircleMoving;
-
 /**
  * Селектор, вычисляющий количество занятых квадратов.
  */

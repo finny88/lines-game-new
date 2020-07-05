@@ -3,7 +3,8 @@ import { combineReducers } from 'redux';
 import { IAppState } from './common';
 
 import { nextCirclesReducer } from './newCircles';
-import { fieldCirclesReducer, isCircleMovingReducer } from './fieldCircles';
+import { fieldCirclesReducer } from './fieldCircles';
+import { isCircleMovingReducer } from './circleMoving';
 
 export const rootReducer = combineReducers<IAppState>({
   nextCircles: nextCirclesReducer,
