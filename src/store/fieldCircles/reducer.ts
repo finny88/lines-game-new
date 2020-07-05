@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions';
 
 import { CircleColor } from 'constants/circleColor';
 import { initialLinesState, commonReducer } from 'store/common';
-import { NEW_FIELD_CIRCLES_GENERATED } from './actionTypes';
+import { NEW_FIELD_CIRCLES_GENERATED, LINE_DETECTED } from './actionTypes';
 
 /**
  * Редьюсер для ветки игрового поля (расстановка и флаг текущего движения).
@@ -13,6 +13,7 @@ import { NEW_FIELD_CIRCLES_GENERATED } from './actionTypes';
 const fieldCirclesReducer = handleActions<CircleColor[]>(
   {
     [NEW_FIELD_CIRCLES_GENERATED]: commonReducer,
+    [LINE_DETECTED]: commonReducer,
   },
   initialLinesState['fieldCircles'],
 );

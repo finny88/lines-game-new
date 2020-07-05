@@ -13,7 +13,11 @@ import { ICircleMotionAction } from './types';
 
 import { CircleColor } from 'constants/circleColor';
 import { CIRCLE_BLINK_ANIMATION_DELAY } from 'constants/gameCharacteristics';
-import { fieldCirclesSelector, NEW_FIELD_CIRCLES_GENERATED } from 'store/fieldCircles';
+import {
+  fieldCirclesSelector,
+  NEW_FIELD_CIRCLES_GENERATED,
+  DETECT_LINES,
+} from 'store/fieldCircles';
 import { INIT_NEXT_POSITION } from 'store/common';
 import { getCirclesSnapshotsList } from 'utils/circleMotion';
 import { SET_CIRCLE_MOVING, MOVE_CIRCLE } from './actionTypes';
@@ -42,7 +46,11 @@ export function* moveCircle({
     }
   }
 
+  yield put({ type: DETECT_LINES });
+
   yield put({ type: INIT_NEXT_POSITION });
+
+  yield put({ type: DETECT_LINES });
 }
 
 export function* watchMoveCircle(): Generator {

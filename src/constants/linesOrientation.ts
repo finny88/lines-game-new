@@ -1,0 +1,11 @@
+/**
+ * Направленность линий.
+ */
+export enum LinesOrientation {
+  HORIZONTAL,
+  VERTICAL,
+  LEFT_TO_RIGHT_TOP_DIAGONAL,
+  LEFT_TO_RIGHT_BOTTOM_DIAGONAL,
+  RIGHT_TO_LEFT_TOP_DIAGONAL,
+  RIGHT_TO_LEFT_BOTTOM_DIAGONAL,
+}

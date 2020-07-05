@@ -14,3 +14,6 @@ export const CIRCLE_COLORS_NUMBER: number = Object.keys(CircleColor).length / 2 
 
 /** Задержка анимации при моргании шарика прир его выделении в мс */
 export const CIRCLE_BLINK_ANIMATION_DELAY = 500;
+
+/** Минимальная длина линии из кружков одинакового цвета */
+export const MIN_LINE_LENGTH = 5;
