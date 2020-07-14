@@ -8,3 +8,23 @@
     flex-direction: column-reverse;
   }
 }
+
+.lines-app__content {
+  @include lines-mq-medium-down {
+    flex-direction: column-reverse;
+  }
+}
+
+.lines-app__info {
+  @include flex-center;
+  flex-direction: column;
+
+  margin-left: $square-size;
+  position: relative;
+
+  @include lines-mq-medium-down {
+    margin-left: 0;
+    flex-direction: row;
+    margin-bottom: $square-size-small;
+  }
+}

@@ -4,8 +4,9 @@ import { hot } from 'react-hot-loader/root';
 
 import { PlayingField } from 'components/PlayingField';
 import { NextCircles } from 'components/NextCircles';
+import { ScoresCounter } from 'components/ScoresCounter';
 
-import { INIT_LINES } from '../store/common/actionTypes';
+import { INIT_LINES } from 'store/common/actionTypes';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -16,8 +17,13 @@ const App: React.FC = () => {
 
   return (
     <div className="lines-app">
-      <PlayingField />
-      <NextCircles />
+      <div className="lines-app__content d-flex">
+        <PlayingField />
+        <div className="lines-app__info">
+          <ScoresCounter />
+          <NextCircles />
+        </div>
+      </div>
     </div>
   );
 };

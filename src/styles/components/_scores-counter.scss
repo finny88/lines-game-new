@@ -1,0 +1,27 @@
+.scores-counter {
+  $font-size: 1.25rem;
+  $font-size-value: 1.5rem;
+  $line-height: 1.2;
+
+  text-align: center;
+  position: absolute;
+  top: calc(25% - (#{$font-size} + #{$font-size-value}) * #{$line-height});
+  font-size: $font-size;
+  font-weight: 500;
+  line-height: $line-height;
+
+  @include lines-mq-medium-down {
+    display: flex;
+    align-items: center;
+    left: calc(25% - #{$square-size-small} * 1.5);
+    top: auto;
+  }
+
+  &__value {
+    font-size: $font-size-value;
+
+    @include lines-mq-medium-down {
+      margin-left: 0.5rem;
+    }
+  }
+}
