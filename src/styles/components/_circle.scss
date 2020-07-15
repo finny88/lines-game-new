@@ -3,7 +3,7 @@
 }
 
 @mixin lines-circle-animate($key-frames-name) {
-  animation: #{$key-frames-name} 500ms ease-in-out forwards;
+  animation: #{$key-frames-name} 500ms ease-out forwards;
 }
 
 $colors: (
@@ -16,7 +16,10 @@ $colors: (
 );
 
 .lines-circle {
-  @include square(70%);
+  $square-size-min: 0;
+  $square-size-max: 70%;
+  $opacity-min: 0;
+  $opacity-max: 1;
 
   border-radius: 50%;
 
@@ -26,12 +29,15 @@ $colors: (
     @keyframes #{$key-frames-name} {
       from {
         background-color: $white;
+        @include square($square-size-min);
+        opacity: $opacity-min;
       }
 
       to {
         background-color: $color;
         @include lines-circle-gradient($color);
-        opacity: 1;
+        opacity: $opacity-max;
+        @include square($square-size-max);
       }
     }
 
@@ -47,11 +53,14 @@ $colors: (
       from {
         background-color: $color;
         @include lines-circle-gradient($color);
-        opacity: 1;
+        opacity: $opacity-max;
+        @include square($square-size-max);
       }
 
       to {
         background-color: $white;
+        @include square($square-size-min);
+        opacity: $opacity-min;
       }
     }
 
@@ -70,18 +79,21 @@ $colors: (
             from {
               background-color: $prev-color;
               @include lines-circle-gradient($prev-color);
-              opacity: 1;
+              opacity: $opacity-max;
+              @include square($square-size-max);
             }
 
-            25%,
-            75% {
-              opacity: 0;
+            45%,
+            55% {
+              opacity: $opacity-min;
+              @include square($square-size-min);
             }
 
             to {
               background-color: $next-color;
               @include lines-circle-gradient($next-color);
-              opacity: 1;
+              opacity: $opacity-max;
+              @include square($square-size-max);
             }
           }
         }
