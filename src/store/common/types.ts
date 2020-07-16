@@ -7,7 +7,7 @@ export interface IAppState {
   isCircleMoving: boolean;
   allSquaresOccupied?: boolean;
   canCircleMove?: boolean;
-  pointsCounter?: number;
+  scoresCounter: number;
 }
 
 /**

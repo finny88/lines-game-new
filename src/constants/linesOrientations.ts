@@ -1,7 +1,7 @@
 /**
  * Направленность линий.
  */
-export enum LinesOrientation {
+export enum LinesOrientations {
   HORIZONTAL,
   VERTICAL,
   LEFT_TO_RIGHT_TOP_DIAGONAL,

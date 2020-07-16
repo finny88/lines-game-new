@@ -7,11 +7,13 @@ import {
   PutEffect,
   takeEvery,
 } from 'redux-saga/effects';
+import { batchActions } from 'redux-batched-actions';
 
 import { ILine } from 'utils/linesDetector/types';
 
 import { CircleColor } from 'constants/circleColor';
 import { nextCirclesSelector } from 'store/newCircles';
+import { SCORES_INCREASED } from 'store/scoresCounter';
 import { getFieldCircles } from 'utils/fieldCircles';
 import { getAllLines } from 'utils/linesDetector/linesDetector';
 import { fieldCirclesSelector, nextCirclesNumberSelector } from './selectors';
@@ -48,7 +50,15 @@ function* detectLines(): Generator {
       circles.includes(index) ? CircleColor.white : color,
     );
 
-    yield put({ type: LINE_DETECTED, payload: newFieldCirclesColors });
+    yield put(
+      batchActions([
+        { type: LINE_DETECTED, payload: newFieldCirclesColors },
+        ...lines.map((line) => ({
+          type: SCORES_INCREASED,
+          payload: { lineLength: line.circles.length, lineOrientation: line.type },
+        })),
+      ]),
+    );
   }
 }
 

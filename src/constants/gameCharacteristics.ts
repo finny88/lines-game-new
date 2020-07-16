@@ -17,3 +17,9 @@ export const CIRCLE_BLINK_ANIMATION_DELAY = 500;
 
 /** Минимальная длина линии из кружков одинакового цвета */
 export const MIN_LINE_LENGTH = 5;
+
+/** Количество очков за один кружок в горизонтальной линии */
+export const DOUBLE_CIRCLE_POINT_WEIGHT = 2;
+
+/** Количество очков за один кружок в диагоальной линии */
+export const TRIPLE_CIRCLE_POINT_WEIGHT = 3;

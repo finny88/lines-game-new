@@ -1,0 +1,3 @@
+import { ACTION_TYPES_PREFIX } from 'store/common';
+
+export const SCORES_INCREASED = `${ACTION_TYPES_PREFIX}POINTS_INCREASED`;

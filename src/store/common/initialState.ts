@@ -9,5 +9,5 @@ export const initialLinesState: IAppState = {
   isCircleMoving: false,
   allSquaresOccupied: false,
   canCircleMove: true,
-  pointsCounter: 0,
+  scoresCounter: 0,
 };

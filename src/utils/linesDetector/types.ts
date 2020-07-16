@@ -1,6 +1,6 @@
 import { IPlayingFieldSquare } from 'models';
 
-import { LinesOrientation } from 'constants/linesOrientation';
+import { LinesOrientations } from 'constants/linesOrientations';
 
 /**
  * Структура данных, описывающая действия при формировании диагоналей на игровом поле.
@@ -25,5 +25,5 @@ export interface ILinesOrientationActions {
  */
 export interface ILine {
   circles: readonly number[];
-  type: LinesOrientation;
+  type: LinesOrientations;
 }
