@@ -1,12 +1,13 @@
 import { CircleColor } from 'constants/circleColor';
+import { IPlayingFieldSquare } from 'models';
 
 // TODO: create reducers for optional fields and make these ones mandatory
 export interface IAppState {
   nextCircles: CircleColor[];
   fieldCircles: CircleColor[];
   isCircleMoving: boolean;
+  inaccessibleDestination: IPlayingFieldSquare;
   allSquaresOccupied?: boolean;
-  canCircleMove?: boolean;
   scoresCounter: number;
 }
 
@@ -16,7 +17,7 @@ export interface IAppState {
 export type AllowedPayloadType = IAppState[keyof IAppState];
 
 /**
- * Простешее redux действие.
+ * Простейшее redux действие.
  *
  * @prop {string} type Тип redux действия.
  */

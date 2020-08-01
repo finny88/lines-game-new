@@ -17,4 +17,10 @@
   @include lines-mq-medium-down {
     @include square($square-size-small);
   }
+
+  transition: background-color 500ms linear;
+
+  &_inaccessible {
+    background-color: $bordeaux;
+  }
 }

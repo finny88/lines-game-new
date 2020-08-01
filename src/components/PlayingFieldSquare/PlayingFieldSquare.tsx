@@ -16,6 +16,7 @@ interface IProps {
   circleColor: CircleColor;
   isSelected: boolean;
   canBeClicked: boolean;
+  isInaccessible: boolean;
   onSelected: (square: IPlayingFieldSquare) => void;
   onDeselected: () => void;
   onEmptyClicked: (square: IPlayingFieldSquare) => void;
@@ -27,6 +28,7 @@ const PlayingFieldSquare: React.FC<IProps> = (props) => {
     circleColor,
     isSelected,
     canBeClicked,
+    isInaccessible,
     onSelected,
     onDeselected,
     onEmptyClicked,
@@ -74,6 +76,7 @@ const PlayingFieldSquare: React.FC<IProps> = (props) => {
       className={classNames('lines-playing-field-square', {
         'lines-playing-field-square_last-row': row === PLAYING_FIELD_ROW_SQUARES_NUMBER,
         'lines-playing-field-square_last-column': column === PLAYING_FIELD_ROW_SQUARES_NUMBER,
+        'lines-playing-field-square_inaccessible': isInaccessible,
       })}
       onClick={handleClick}
     >

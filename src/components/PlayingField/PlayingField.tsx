@@ -4,19 +4,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import { IPlayingFieldSquare } from 'models';
 import { ICircleMotion } from 'utils/circleMotion';
 
-import { fieldCirclesSelector } from 'store/fieldCircles/selectors';
+import { initialSquare } from 'constants/initial';
+import { fieldCirclesSelector } from 'store/fieldCircles';
 import { isCircleMovingSelector, MOVE_CIRCLE } from 'store/circleMoving';
+import { inaccessibleDestinationSelector } from 'store/inaccessibleDestination';
 import { squaresDecades } from 'utils/squaresDecades';
 
 import { PlayingFieldSquare } from 'components/PlayingFieldSquare';
-
-const initialSquare: IPlayingFieldSquare = { row: -1, column: -1, flatIndex: -1 };
 
 const PlayingField: React.FC = () => {
   const circleMotionRef = useRef<ICircleMotion | null>(null);
 
   const fieldCirclesColors = useSelector(fieldCirclesSelector);
   const isCircleMoving = useSelector(isCircleMovingSelector);
+  const inaccessibleDestination = useSelector(inaccessibleDestinationSelector);
 
   const [selected, setSelected] = useState<IPlayingFieldSquare>(initialSquare);
 
@@ -39,7 +40,7 @@ const PlayingField: React.FC = () => {
         dispatch({ type: MOVE_CIRCLE, payload: circleMotionRef.current });
       }
     },
-    [dispatch, selected], // fieldCirclesColors
+    [dispatch, selected],
   );
 
   return (
@@ -56,6 +57,7 @@ const PlayingField: React.FC = () => {
               isSelected={square === selected}
               canBeClicked={!isCircleMoving}
               onSelected={setSelected}
+              isInaccessible={inaccessibleDestination === square}
               onDeselected={handleCircleDeselected}
               onEmptyClicked={handleEmptyClicked}
             />

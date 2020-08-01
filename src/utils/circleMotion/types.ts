@@ -43,12 +43,10 @@ export interface ICircleMotion {
  *
  * @prop {CircleColor[]} circles Текущая расстовка кружков на игровом поле.
  * @prop {boolean} isLast Последний ли ход.
- * @prop {boolean} motionPossible Возможно ли движении по заданному объекту типа ICircleMotion.
  */
 export interface IPlayingFieldSnapshot {
   circles: CircleColor[];
   isLast: boolean;
-  motionPossible: boolean;
 }
 
 export interface ISquaresMarksManager {

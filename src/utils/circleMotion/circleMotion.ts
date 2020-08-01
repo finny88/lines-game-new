@@ -214,15 +214,8 @@ export const getCirclesSnapshotsList = (
           {
             circles: currentCirclesList,
             isLast: index === purposeWay.length - 1,
-            motionPossible: true,
           },
         ];
       }, [])
-    : [
-        {
-          circles: fieldCircles,
-          isLast: true,
-          motionPossible: false,
-        },
-      ];
+    : [];
 };
