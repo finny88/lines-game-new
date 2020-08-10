@@ -79,6 +79,7 @@ const PlayingFieldSquare: React.FC<IProps> = (props) => {
         'lines-playing-field-square_inaccessible': isInaccessible,
       })}
       onClick={handleClick}
+      data-inaccessible-message={`No way\nhere!`}
     >
       <Circle color={isSelected && !circleShown ? CircleColor.white : circleColor} />
     </div>

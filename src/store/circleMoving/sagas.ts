@@ -55,7 +55,7 @@ export function* moveCircle({
   } else {
     yield put({ type: SET_INACCESSIBLE_DESTINATION, payload: circleMotion.destination });
 
-    yield delay(CIRCLE_BLINK_ANIMATION_DELAY);
+    yield delay(CIRCLE_BLINK_ANIMATION_DELAY * 1.5);
 
     yield put({ type: RESET_INACCESSIBLE_DESTINATION });
   }

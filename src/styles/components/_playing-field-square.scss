@@ -1,3 +1,21 @@
+@keyframes no-way-here {
+  0% {
+    color: $light-yellow;
+    font-size: 0.25rem;
+  }
+
+  50% {
+    opacity: 1;
+    font-size: 0.75rem;
+    color: $lemon-chiffon;
+  }
+
+  100% {
+    color: $light-golden-rod-yellow;
+    font-size: 1rem;
+  }
+}
+
 .lines-playing-field-square {
   @include flex-center;
 
@@ -18,9 +36,23 @@
     @include square($square-size-small);
   }
 
-  transition: background-color 500ms linear;
+  transition: background-color 500ms ease-out;
+  position: relative;
 
   &_inaccessible {
     background-color: $bordeaux;
+
+    &::before {
+      content: attr(data-inaccessible-message);
+      position: absolute;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      font-style: italic;
+      width: $square-size;
+      z-index: 1;
+      animation: no-way-here 750ms ease-out;
+      white-space: pre;
+    }
   }
 }
