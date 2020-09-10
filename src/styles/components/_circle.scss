@@ -6,15 +6,6 @@
   animation: #{$key-frames-name} 500ms ease-out forwards;
 }
 
-$colors: (
-  'red': $red,
-  'green': $green,
-  'blue': $blue,
-  'cyan': $cyan,
-  'gold': $gold,
-  'purple': $purple,
-);
-
 .lines-circle {
   $square-size-min: 0;
   $square-size-max: 70%;

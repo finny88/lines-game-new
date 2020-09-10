@@ -1,6 +1,7 @@
 import { IPlayingFieldSquare } from 'models';
 
 import { LinesOrientations } from 'constants/linesOrientations';
+import { CircleColor } from 'constants/circleColor';
 
 /**
  * Структура данных, описывающая действия при формировании диагоналей на игровом поле.
@@ -26,4 +27,8 @@ export interface ILinesOrientationActions {
 export interface ILine {
   circles: readonly number[];
   type: LinesOrientations;
+}
+
+export interface IColoredLine extends ILine {
+  color: CircleColor;
 }

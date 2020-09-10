@@ -8,6 +8,7 @@ import { initialSquare } from 'constants/initial';
 import { fieldCirclesSelector } from 'store/fieldCircles';
 import { isCircleMovingSelector, MOVE_CIRCLE } from 'store/circleMoving';
 import { inaccessibleDestinationSelector } from 'store/inaccessibleDestination';
+import { increasingInfoSelector } from 'store/increasingInfo';
 import { squaresDecades } from 'utils/squaresDecades';
 
 import { PlayingFieldSquare } from 'components/PlayingFieldSquare';
@@ -18,6 +19,7 @@ const PlayingField: React.FC = () => {
   const fieldCirclesColors = useSelector(fieldCirclesSelector);
   const isCircleMoving = useSelector(isCircleMovingSelector);
   const inaccessibleDestination = useSelector(inaccessibleDestinationSelector);
+  const increasingInfo = useSelector(increasingInfoSelector);
 
   const [selected, setSelected] = useState<IPlayingFieldSquare>(initialSquare);
 
@@ -58,6 +60,9 @@ const PlayingField: React.FC = () => {
               canBeClicked={!isCircleMoving}
               onSelected={setSelected}
               isInaccessible={inaccessibleDestination === square}
+              increasingInfo={
+                increasingInfo.startSquare === square.flatIndex ? increasingInfo : undefined
+              }
               onDeselected={handleCircleDeselected}
               onEmptyClicked={handleEmptyClicked}
             />

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import classNames from 'classnames';
 
-import { IPlayingFieldSquare } from 'models';
+import { IIncreasingInfo, IPlayingFieldSquare } from 'models';
 
 import {
   PLAYING_FIELD_ROW_SQUARES_NUMBER,
@@ -10,6 +10,7 @@ import {
 import { CircleColor } from 'constants/circleColor';
 
 import { Circle } from 'components/Circle';
+import IncreasingInfo from 'components/IncreasingInfo/IncreasingInfo';
 
 interface IProps {
   square: IPlayingFieldSquare;
@@ -17,6 +18,7 @@ interface IProps {
   isSelected: boolean;
   canBeClicked: boolean;
   isInaccessible: boolean;
+  increasingInfo?: IIncreasingInfo;
   onSelected: (square: IPlayingFieldSquare) => void;
   onDeselected: () => void;
   onEmptyClicked: (square: IPlayingFieldSquare) => void;
@@ -29,6 +31,7 @@ const PlayingFieldSquare: React.FC<IProps> = (props) => {
     isSelected,
     canBeClicked,
     isInaccessible,
+    increasingInfo,
     onSelected,
     onDeselected,
     onEmptyClicked,
@@ -80,7 +83,9 @@ const PlayingFieldSquare: React.FC<IProps> = (props) => {
       })}
       onClick={handleClick}
       data-inaccessible-message={`No way\nhere!`}
+      data-increasing-info={increasingInfo && `+${increasingInfo.scoresIncrease}`}
     >
+      {increasingInfo && <IncreasingInfo {...increasingInfo} />}
       <Circle color={isSelected && !circleShown ? CircleColor.white : circleColor} />
     </div>
   );

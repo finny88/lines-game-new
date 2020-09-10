@@ -1,0 +1,64 @@
+@use 'sass:string';
+@use "sass:meta";
+
+@function horizontalTransform($current-size) {
+  @return string.unquote('translateX(#{$current-size})');
+}
+
+@function verticalTransform($current-size) {
+  @return string.unquote('translateY(#{$current-size})');
+}
+
+@function leftToRightTransform($current-size) {
+  @return string.unquote('translate(#{$current-size}, #{$current-size})');
+}
+
+@function rightToLeftTransform($current-size) {
+  @return string.unquote('translate(-#{$current-size}, #{$current-size})');
+}
+
+.lines-increasing-info {
+  @mixin increasing-info-animation($animation-name, $func, $length) {
+    @keyframes increasing-info-#{$animation-name}-#{$length} {
+      @for $i from 0 through $length - 1 {
+        #{$i * 100% / ($length - 1)} {
+          transform: meta.call($func, $square-size * $i);
+          opacity: 1 - $i * (1 / ($length - 1));
+        }
+      }
+    }
+
+    animation: increasing-info-#{$animation-name}-#{$length} 750ms ease-out;
+  }
+
+  @mixin increasing-info {
+    content: attr(data-increasing-info);
+    color: $blue;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+  }
+
+  $line-types: (
+    'horizontal': horizontalTransform,
+    'vertical': verticalTransform,
+    'left-to-right-top': leftToRightTransform,
+    'left-to-right-bottom': leftToRightTransform,
+    'right-to-left-top': rightToLeftTransform,
+    'right-to-left-bottom': rightToLeftTransform,
+  );
+
+  @each $color-name, $color in $colors {
+    @each $line-type-name, $func in $line-types {
+      @for $i from 5 through 10 {
+        &_#{$line-type-name}_#{$color-name}_#{$i} {
+          @include increasing-info;
+          @include increasing-info-animation($line-type-name, $func, $i);
+          color: $color;
+        }
+      }
+    }
+  }
+}

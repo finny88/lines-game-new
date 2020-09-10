@@ -1,4 +1,4 @@
-import { ILine, ILinesOrientationActions } from './types';
+import { IColoredLine, ILine, ILinesOrientationActions } from './types';
 
 import { CircleColor } from 'constants/circleColor';
 import { MIN_LINE_LENGTH } from 'constants/gameCharacteristics';
@@ -39,6 +39,7 @@ function* getDiagonals(): IterableIterator<ILine> {
 }
 
 const diagonals: ILine[] = Array.from(getDiagonals());
+console.log('diagonals', diagonals);
 
 function* getCurrentLine(
   startIndex: number,
@@ -65,7 +66,7 @@ function* getCurrentLine(
   }
 }
 
-export function* getAllLines(fieldCircles: CircleColor[]): IterableIterator<ILine> {
+export function* getAllLines(fieldCircles: CircleColor[]): IterableIterator<IColoredLine> {
   for (let i = 0; i < diagonals.length; i++) {
     const currentDiagonal = diagonals[i];
 
@@ -80,7 +81,11 @@ export function* getAllLines(fieldCircles: CircleColor[]): IterableIterator<ILin
         currentLine.length >= MIN_LINE_LENGTH &&
         fieldCircles[currentLine[0]] !== CircleColor.white
       ) {
-        yield { circles: currentLine, type: currentDiagonal.type };
+        yield {
+          circles: currentLine,
+          type: currentDiagonal.type,
+          color: fieldCircles[currentLine[0]],
+        };
       }
 
       checkedCurrentDiagonalItems += currentLine.length;

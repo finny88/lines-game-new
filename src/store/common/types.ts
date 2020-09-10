@@ -1,5 +1,5 @@
 import { CircleColor } from 'constants/circleColor';
-import { IPlayingFieldSquare } from 'models';
+import { IPlayingFieldSquare, IIncreasingInfo } from 'models';
 
 // TODO: create reducers for optional fields and make these ones mandatory
 export interface IAppState {
@@ -9,6 +9,7 @@ export interface IAppState {
   inaccessibleDestination: IPlayingFieldSquare;
   allSquaresOccupied?: boolean;
   scoresCounter: number;
+  increasingInfo: IIncreasingInfo;
 }
 
 /**

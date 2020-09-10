@@ -2,10 +2,10 @@
  * Направленность линий.
  */
 export enum LinesOrientations {
-  HORIZONTAL,
-  VERTICAL,
-  LEFT_TO_RIGHT_TOP_DIAGONAL,
-  LEFT_TO_RIGHT_BOTTOM_DIAGONAL,
-  RIGHT_TO_LEFT_TOP_DIAGONAL,
-  RIGHT_TO_LEFT_BOTTOM_DIAGONAL,
+  HORIZONTAL = 'horizontal',
+  VERTICAL = 'vertical',
+  LEFT_TO_RIGHT_TOP = 'left-to-right-top',
+  LEFT_TO_RIGHT_BOTTOM = 'left-to-right-bottom',
+  RIGHT_TO_LEFT_TOP = 'right-to-left-top',
+  RIGHT_TO_LEFT_BOTTOM = 'right-to-left-bottom',
 }

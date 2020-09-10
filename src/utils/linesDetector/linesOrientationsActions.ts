@@ -38,7 +38,7 @@ export const linesOrientationActions = new Map<LinesOrientations, ILinesOrientat
     isSquareFlatArrayIndexLast: () => false,
     isLineLengthEnough: commonIsLineLengthEnough,
   })
-  .set(LinesOrientations.LEFT_TO_RIGHT_TOP_DIAGONAL, {
+  .set(LinesOrientations.LEFT_TO_RIGHT_TOP, {
     outerCycleStart: 1,
     outerCycleFinish: (i) => i < PLAYING_FIELD_ROW_SQUARES_NUMBER,
     outerCycleStep: (i) => i + 1,
@@ -50,7 +50,7 @@ export const linesOrientationActions = new Map<LinesOrientations, ILinesOrientat
     isSquareFlatArrayIndexLast: () => false,
     isLineLengthEnough: commonIsLineLengthEnough,
   })
-  .set(LinesOrientations.LEFT_TO_RIGHT_BOTTOM_DIAGONAL, {
+  .set(LinesOrientations.LEFT_TO_RIGHT_BOTTOM, {
     outerCycleStart: 1,
     outerCycleFinish: (i) => i < PLAYING_FIELD_ROW_SQUARES_NUMBER,
     outerCycleStep: (i) => i + 1,
@@ -62,7 +62,7 @@ export const linesOrientationActions = new Map<LinesOrientations, ILinesOrientat
     isSquareFlatArrayIndexLast: () => false,
     isLineLengthEnough: commonIsLineLengthEnough,
   })
-  .set(LinesOrientations.RIGHT_TO_LEFT_TOP_DIAGONAL, {
+  .set(LinesOrientations.RIGHT_TO_LEFT_TOP, {
     outerCycleStart: 0,
     outerCycleFinish: (i) => i < PLAYING_FIELD_ROW_SQUARES_NUMBER,
     outerCycleStep: (i) => i + 1,
@@ -76,7 +76,7 @@ export const linesOrientationActions = new Map<LinesOrientations, ILinesOrientat
     isSquareFlatArrayIndexLast: () => false,
     isLineLengthEnough: commonIsLineLengthEnough,
   })
-  .set(LinesOrientations.RIGHT_TO_LEFT_BOTTOM_DIAGONAL, {
+  .set(LinesOrientations.RIGHT_TO_LEFT_BOTTOM, {
     outerCycleStart: 1,
     outerCycleFinish: (i) => i < PLAYING_FIELD_ROW_SQUARES_NUMBER,
     outerCycleStep: (i) => i + 1,

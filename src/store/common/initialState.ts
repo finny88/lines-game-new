@@ -11,4 +11,5 @@ export const initialLinesState: IAppState = {
   allSquaresOccupied: false,
   scoresCounter: 0,
   inaccessibleDestination: initialSquare,
+  increasingInfo: { startSquare: -1, lineLength: 0, scoresIncrease: 0 },
 };
