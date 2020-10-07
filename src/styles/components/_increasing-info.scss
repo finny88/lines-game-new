@@ -18,17 +18,31 @@
 }
 
 .lines-increasing-info {
-  @mixin increasing-info-animation($animation-name, $func, $length) {
-    @keyframes increasing-info-#{$animation-name}-#{$length} {
+  @mixin increasing-info-keyframes($keyframes-name, $func, $length, $current-square-size) {
+    @keyframes #{$keyframes-name} {
       @for $i from 0 through $length - 1 {
         #{$i * 100% / ($length - 1)} {
-          transform: meta.call($func, $square-size * $i);
+          transform: meta.call($func, $current-square-size * $i);
           opacity: 1 - $i * (1 / ($length - 1));
         }
       }
     }
+  }
 
-    animation: increasing-info-#{$animation-name}-#{$length} 750ms ease-out;
+  @mixin increasing-info-animation($animation-name, $func, $length) {
+    $keyframes-name: increasing-info-#{$animation-name}-#{$length};
+    $keyframes-name-small: increasing-info-#{$animation-name}-#{$length}-small;
+    $animation-duration: 750ms;
+    $animation-func: ease-out;
+
+    @include increasing-info-keyframes($keyframes-name, $func, $length, $square-size);
+    @include increasing-info-keyframes($keyframes-name-small, $func, $length, $square-size-small);
+
+    animation: $keyframes-name $animation-duration $animation-func;
+
+    @include lines-mq-medium-down {
+      animation: $keyframes-name-small $animation-duration $animation-func;
+    }
   }
 
   @mixin increasing-info {

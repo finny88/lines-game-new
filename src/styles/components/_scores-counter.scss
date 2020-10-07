@@ -13,8 +13,6 @@
   @include lines-mq-medium-down {
     display: flex;
     align-items: center;
-    left: calc(25% - #{$square-size-small} * 1.5);
-    top: auto;
   }
 
   &__value {
