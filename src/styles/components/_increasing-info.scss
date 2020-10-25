@@ -22,7 +22,7 @@
     @keyframes #{$keyframes-name} {
       @for $i from 0 through $length - 1 {
         #{$i * 100% / ($length - 1)} {
-          transform: meta.call($func, $current-square-size * $i);
+          transform: meta.call(get-function($func), $current-square-size * $i);
           opacity: 1 - $i * (1 / ($length - 1));
         }
       }

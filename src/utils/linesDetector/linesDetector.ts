@@ -39,7 +39,6 @@ function* getDiagonals(): IterableIterator<ILine> {
 }
 
 const diagonals: ILine[] = Array.from(getDiagonals());
-console.log('diagonals', diagonals);
 
 function* getCurrentLine(
   startIndex: number,

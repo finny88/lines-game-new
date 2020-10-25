@@ -1,6 +1,7 @@
 const merge = require('webpack-merge');
 const base = require('./base.webpack.config.js');
 const Dotenv = require('dotenv-webpack');
+const path = require('path');
 
 module.exports = merge(base, {
   mode: 'development',
@@ -31,6 +32,9 @@ module.exports = merge(base, {
             options: {
               implementation: require('sass'),
               sourceMap: true,
+              sassOptions: {
+                includePaths: [path.resolve(__dirname, './src/styles')],
+              },
             },
           },
         ],
