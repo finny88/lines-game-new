@@ -1,18 +1,10 @@
 @keyframes no-way-here {
-  0% {
-    color: $light-yellow;
-    font-size: 0.25rem;
+  from {
+    opacity: 0;
   }
 
-  50% {
+  to {
     opacity: 1;
-    font-size: 0.75rem;
-    color: $lemon-chiffon;
-  }
-
-  100% {
-    color: $light-golden-rod-yellow;
-    font-size: 1rem;
   }
 }
 
@@ -42,17 +34,41 @@
   &_inaccessible {
     background-color: $bordeaux;
 
-    &::before {
-      content: attr(data-inaccessible-message);
+    &::before,
+    &::after {
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+      opacity: 1;
+      pointer-events: none;
       position: absolute;
+      box-sizing: border-box;
+      line-height: 1;
+      font-size: 1.2em;
+      animation: no-way-here 500ms ease-out;
+    }
+
+    &::before {
+      bottom: 100%;
+      border: 5px solid transparent;
+      border-bottom-width: 0;
+      border-top-color: $dimgray;
+      content: '';
+      z-index: 100;
+    }
+
+    &::after {
+      bottom: calc(100% + 5px);
+      content: attr(data-inaccessible-message);
       text-align: center;
-      font-size: 1.25rem;
-      font-weight: 700;
-      font-style: italic;
-      width: $square-size;
-      z-index: 1;
-      animation: no-way-here 750ms ease-out;
-      white-space: pre;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 6px 8px;
+      border-radius: 3px;
+      background: $dimgray;
+      color: $white;
+      z-index: 99;
     }
   }
 }
