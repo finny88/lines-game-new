@@ -1,5 +1,6 @@
 {
-  "name": "webpack-by-sample",
+  "homepage": "https://github.com/finny88/lines-game-new",
+  "name": "fin-lines-game",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +10,9 @@
     "build:prod": "rimraf dist && webpack --config prod.webpack.config.js",
     "start:prod": "node ./server",
     "lint": "eslint --fix ./src/**/*.{ts,tsx}",
-    "build:perf": "rimraf dist && webpack --config perf.webpack.config.js"
+    "build:perf": "rimraf dist && webpack --config perf.webpack.config.js",
+    "predeploy": "npm run build:prod",
+    "deploy": "gh-pages -d dist"
   },
   "husky": {
     "hooks": {
@@ -29,15 +32,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/finny88/webpack-by-sample.git"
+    "url": "https://github.com/finny88/lines-game-new.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/finny88/webpack-by-sample/issues"
+    "url": "https://github.com/finny88/lines-game-new/issues"
   },
-  "homepage": "https://github.com/finny88/webpack-by-sample#readme",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
@@ -65,6 +67,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^4.0.4",
     "file-loader": "^6.0.0",
+    "gh-pages": "^3.1.0",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.2.0",
     "mini-css-extract-plugin": "^0.9.0",
