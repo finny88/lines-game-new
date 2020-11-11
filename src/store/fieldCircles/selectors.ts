@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import { IAppState } from 'store/common';
 
 import { CircleColor } from 'constants/circleColor';
-import { PLAYING_FIELD_SQUARES_NUMBER, NEXT_CIRCLES_NUMBER } from 'constants/gameCharacteristics';
+import { NEXT_CIRCLES_NUMBER, PLAYING_FIELD_SQUARES_NUMBER } from 'constants/gameCharacteristics';
 
 /**
  * Селектор для выборки данных игрового поля (расстановки шаров и флага текущего движения шара).
@@ -34,4 +34,12 @@ export const nextCirclesNumberSelector = createSelector(
       ? NEXT_CIRCLES_NUMBER
       : fieldCirclesFreeNumber;
   },
+);
+
+/**
+ * Селектор, вычисляеющий, заняты ли все квадраты.
+ */
+export const allSquaresOccupiedSelector = createSelector(
+  squaresOccupiedNumberSelector,
+  (squaresOccupiedNumber) => PLAYING_FIELD_SQUARES_NUMBER === squaresOccupiedNumber,
 );

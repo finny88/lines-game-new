@@ -5,13 +5,16 @@ import { IPlayingFieldSquare } from 'models';
 import { ICircleMotion } from 'utils/circleMotion';
 
 import { initialSquare } from 'constants/initial';
-import { fieldCirclesSelector } from 'store/fieldCircles';
+import { allSquaresOccupiedSelector, fieldCirclesSelector } from 'store/fieldCircles';
 import { isCircleMovingSelector, MOVE_CIRCLE } from 'store/circleMoving';
 import { inaccessibleDestinationSelector } from 'store/inaccessibleDestination';
 import { increasingInfoSelector } from 'store/increasingInfo';
 import { squaresDecades } from 'utils/squaresDecades';
 
 import { PlayingFieldSquare } from 'components/PlayingFieldSquare';
+import { GameOverModal } from 'components/GameOverModal';
+
+const GAME_OVER_MODAL_ROOT_ID = 'GAME_OVER_MODAL_ROOT_ID';
 
 const PlayingField: React.FC = () => {
   const circleMotionRef = useRef<ICircleMotion | null>(null);
@@ -20,6 +23,7 @@ const PlayingField: React.FC = () => {
   const isCircleMoving = useSelector(isCircleMovingSelector);
   const inaccessibleDestination = useSelector(inaccessibleDestinationSelector);
   const increasingInfo = useSelector(increasingInfoSelector);
+  const allSquaresOccupied = useSelector(allSquaresOccupiedSelector);
 
   const [selected, setSelected] = useState<IPlayingFieldSquare>(initialSquare);
 
@@ -46,7 +50,7 @@ const PlayingField: React.FC = () => {
   );
 
   return (
-    <div className="lines-playing-field">
+    <div className="lines-playing-field" id={GAME_OVER_MODAL_ROOT_ID}>
       {squaresDecades.map((decade, index) => (
         <div className="lines-playing-field__row" key={`lines-row-${index}`}>
           {decade.map((square) => (
@@ -69,6 +73,7 @@ const PlayingField: React.FC = () => {
           ))}
         </div>
       ))}
+      {allSquaresOccupied && <GameOverModal targetId={GAME_OVER_MODAL_ROOT_ID} />}
     </div>
   );
 };

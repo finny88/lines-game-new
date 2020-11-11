@@ -1,4 +1,5 @@
 import { IAppState } from 'store/common';
+
 import { CircleColor } from 'constants/circleColor';
 
 /**
