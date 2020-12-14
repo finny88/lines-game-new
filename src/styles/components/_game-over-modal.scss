@@ -1,19 +1,8 @@
 .lines-game-over-modal {
-  $size: 300px;
+  @include modal($width: 300px);
 
-  background: $white;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  width: $size;
-  height: $size;
-  box-shadow: 0 5px 10px 2px rgba(195, 192, 192, 0.5);
   border-radius: $size / 10;
-  padding: 20px;
-
+  z-index: 10;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
