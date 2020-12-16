@@ -6,13 +6,15 @@ import { Portal } from 'components/Portal';
 
 export interface IModalProps extends IPortalProps {
   children: React.ReactNode;
-  classNames?: string;
+  contentClassName?: string;
 }
 
-const Modal: React.FC<IModalProps> = ({ children, targetId, classNames }) => {
+const Modal: React.FC<IModalProps> = ({ children, targetId, contentClassName }) => {
   return (
     <Portal targetId={targetId}>
-      <div className={classNames}>{children}</div>
+      <div className="lines-modal">
+        <div className={contentClassName}>{children}</div>
+      </div>
     </Portal>
   );
 };

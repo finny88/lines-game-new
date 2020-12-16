@@ -21,7 +21,7 @@ const GameOverMountRoot: React.FC<IProps> = ({ targetId }) => {
   }, [dispatch]);
 
   return (
-    <Modal targetId={targetId} classNames="lines-game-over-modal">
+    <Modal targetId={targetId} contentClassName="lines-game-over-modal">
       <h1>Game over!</h1>
       <Button outline color="primary" size="lg" onClick={onRestartClick}>
         Restart
