@@ -7,9 +7,9 @@ const ScoresCounter: React.FC = () => {
   const scoresCounter = useSelector(scoresCounterSelector);
 
   return (
-    <div className="scores-counter">
+    <div className="lines-scores-counter">
       Scores:
-      <div className="scores-counter__value">{scoresCounter}</div>
+      <div className="lines-scores-counter__value">{scoresCounter}</div>
     </div>
   );
 };

@@ -11,11 +11,18 @@ interface ISettingsModalProps extends Pick<IModalProps, 'targetId'> {
 
 const MenuModal: React.FC<ISettingsModalProps> = ({ targetId, onClose }) => {
   return (
-    <Modal targetId={targetId} classNames="menu-modal">
-      <h1>Menu</h1>
-      <div>
-        <Button>Reset</Button>
-        <Button onClick={onClose}>Cancel</Button>
+    <Modal targetId={targetId} contentClassName="lines-menu-modal">
+      <div className="lines-menu-modal__children">
+        <div className="lines-menu-modal__top">
+          <h1 className="lines-menu-modal__header">Menu</h1>
+          <Button onClick={onClose} className="lines-menu-modal__close-button">
+            X
+          </Button>
+        </div>
+
+        <Button color="danger" className="w-50">
+          Reset
+        </Button>
       </div>
     </Modal>
   );

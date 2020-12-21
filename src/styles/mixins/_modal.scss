@@ -1,6 +1,6 @@
 @import 'common';
 
-@mixin modal($width, $height: null) {
+@mixin modal-content($width, $height: null) {
   @if ($height) {
     @include size($width, $height);
   } @else {

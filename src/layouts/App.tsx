@@ -32,7 +32,7 @@ const App: React.FC = () => {
           <div className="lines-app__info">
             <ScoresCounter />
             <NextCircles />
-            <Button color="primary" onClick={handleSettingClick}>
+            <Button color="primary" className="lines-menu-button" onClick={handleSettingClick}>
               Settings
             </Button>
           </div>

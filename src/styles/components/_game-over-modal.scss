@@ -1,5 +1,7 @@
 .lines-game-over-modal {
-  @include modal($width: 300px);
+  $size: 300px;
+
+  @include modal-content($width: $size);
 
   border-radius: $size / 10;
   z-index: 10;

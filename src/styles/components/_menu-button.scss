@@ -1,0 +1,8 @@
+.lines-menu-button {
+  position: absolute;
+  top: 75%;
+
+  @include lines-mq-medium-down {
+    position: static;
+  }
+}

@@ -1,9 +1,9 @@
 .lines-next-circles {
   @include box-shadow;
-  // @include position-absolute-center;
 
   @include lines-mq-medium-down {
     display: flex;
+    margin-bottom: 20px;
   }
 }
 

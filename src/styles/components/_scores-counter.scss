@@ -1,4 +1,4 @@
-.scores-counter {
+.lines-scores-counter {
   $font-size: 1.25rem;
   $font-size-value: 1.5rem;
   $line-height: 1.2;
@@ -13,6 +13,8 @@
   @include lines-mq-medium-down {
     display: flex;
     align-items: center;
+    position: static;
+    margin-bottom: 20px;
   }
 
   &__value {
