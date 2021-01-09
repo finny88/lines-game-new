@@ -32,9 +32,11 @@ const MenuModal: React.FC<ISettingsModalProps> = ({ targetId, onClose }) => {
             </Button>
           </div>
 
-          <Button color="danger" className="w-50" onClick={handleResetClick}>
-            Reset
-          </Button>
+          <div className="lines-menu-modal__body">
+            <Button color="danger" className="w-50" onClick={handleResetClick}>
+              Reset
+            </Button>
+          </div>
         </div>
       </Modal>
       {showConfirm && (

@@ -1,6 +1,6 @@
 .lines-confirm-modal {
   $width: 360px;
-  $height: 120px;
+  $height: auto;
   $border-radius: $width / 10;
 
   @include modal-content($width: $width, $height: $height);
