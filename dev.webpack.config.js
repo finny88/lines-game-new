@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 const merge = require('webpack-merge');
 const base = require('./base.webpack.config.js');
 const Dotenv = require('dotenv-webpack');
@@ -47,8 +48,10 @@ module.exports = merge(base, {
   },
   devServer: {
     hot: true,
+    inline: true,
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new Dotenv({
       path: './dev.env',
     }),

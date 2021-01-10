@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { hot } from 'react-hot-loader/root';
 import { Button } from 'reactstrap';
@@ -17,8 +17,13 @@ const App: React.FC = () => {
 
   const [showSettings, setShowSettings] = useState(false);
 
+  const isFirst = useRef(true);
+
   useEffect(() => {
-    dispatch({ type: INIT_LINES });
+    if (isFirst.current) {
+      dispatch({ type: INIT_LINES });
+      isFirst.current = false;
+    }
   }, [dispatch]);
 
   const handleSettingClick = useCallback(() => setShowSettings(true), []);

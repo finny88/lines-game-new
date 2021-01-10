@@ -5,6 +5,7 @@ import { enableBatching } from 'redux-batched-actions';
 
 import { rootReducer } from './rootReducer';
 import { rootSaga } from './rootSaga';
+
 import { IAppState } from './common';
 
 const sagaMiddleware = createSagaMiddleware();

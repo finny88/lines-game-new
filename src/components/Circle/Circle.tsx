@@ -15,6 +15,7 @@ const Circle: React.FC<IProps> = ({ color }) => {
     <div
       className={classNames('lines-circle', {
         [`lines-circle_${prevColorName}-to-${colorName}`]: prevColorName !== colorName,
+        [`lines-circle_${prevColorName}`]: prevColorName === colorName,
       })}
     />
   );

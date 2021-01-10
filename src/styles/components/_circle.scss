@@ -65,32 +65,37 @@
       @if ($prev-name != $next-name) {
         $key-frames-name: #{$prev-name}-to-#{$next-name};
 
-        @if ($prev-name != $next-name) {
-          @keyframes #{$key-frames-name} {
-            from {
-              background-color: $prev-color;
-              @include lines-circle-gradient($prev-color);
-              opacity: $opacity-max;
-              @include square($square-size-max);
-            }
+        @keyframes #{$key-frames-name} {
+          from {
+            background-color: $prev-color;
+            @include lines-circle-gradient($prev-color);
+            opacity: $opacity-max;
+            @include square($square-size-max);
+          }
 
-            45%,
-            55% {
-              opacity: $opacity-min;
-              @include square($square-size-min);
-            }
+          45%,
+          55% {
+            opacity: $opacity-min;
+            @include square($square-size-min);
+          }
 
-            to {
-              background-color: $next-color;
-              @include lines-circle-gradient($next-color);
-              opacity: $opacity-max;
-              @include square($square-size-max);
-            }
+          to {
+            background-color: $next-color;
+            @include lines-circle-gradient($next-color);
+            opacity: $opacity-max;
+            @include square($square-size-max);
           }
         }
 
         &_#{$key-frames-name} {
           @include lines-circle-animate($key-frames-name);
+        }
+      } @else {
+        &_#{$prev-name} {
+          background-color: $prev-color;
+          @include lines-circle-gradient($prev-color);
+          opacity: $opacity-max;
+          @include square($square-size-max);
         }
       }
     }
