@@ -1,7 +1,7 @@
 {
   "homepage": "https://github.com/finny88/lines-game-new",
   "name": "fin-lines-game",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
