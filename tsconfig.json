@@ -13,7 +13,10 @@
     "resolveJsonModule": true,
     "jsx": "preserve",
     "sourceMap": true,
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "paths": {
+      "rxjs": ["../node_modules/rxjs/dist/types"]
+    }
   },
   "include": ["src/**/*"]
 }

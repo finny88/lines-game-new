@@ -1,23 +1,23 @@
-import { takeEvery } from 'redux-saga/effects';
+import { put, takeEvery, PutEffect } from 'redux-saga/effects';
 
-import { generateNextCircles, GenerateNextCirclesEffect } from 'store/newCircles';
+import { GENERATE_NEXT_CIRCLES } from 'store/newCircles';
 import { INIT_LINES, INIT_NEXT_POSITION } from './actionTypes';
 import { generateFieldCircles, GenerateFieldCirclesEffect } from 'store/fieldCircles';
 
-export type InitLinesEffect = GenerateFieldCirclesEffect | GenerateNextCirclesEffect;
+export type InitLinesEffect = GenerateFieldCirclesEffect | PutEffect;
 
 function* initLines(): Generator<InitLinesEffect> {
-  yield* generateNextCircles();
+  yield put({ type: GENERATE_NEXT_CIRCLES });
 
   yield* generateFieldCircles();
 
-  yield* generateNextCircles();
+  yield put({ type: GENERATE_NEXT_CIRCLES });
 }
 
 function* initNextPosition(): Generator<InitLinesEffect> {
   yield* generateFieldCircles();
 
-  yield* generateNextCircles();
+  yield put({ type: GENERATE_NEXT_CIRCLES });
 }
 
 export function* watchInitLines(): Generator {
